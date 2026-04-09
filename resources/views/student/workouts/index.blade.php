@@ -26,6 +26,7 @@
                     <th class="border px-4 py-2">Repeticiones</th>
                     <th class="border px-4 py-2">Peso</th>
                     <th class="border px-4 py-2">Notas</th>
+                    <th class="border px-4 py-2">Acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -36,10 +37,19 @@
                         <td class="border px-4 py-2">{{ $log->reps }}</td>
                         <td class="border px-4 py-2">{{ $log->weight }}</td>
                         <td class="border px-4 py-2">{{ $log->notes }}</td>
+                        <td class="border px-4 py-2">
+                            <a href="/student/workouts/{{ $log->id }}/edit" class="text-blue-600 mr-3">Editar</a>
+
+                            <form action="/student/workouts/{{ $log->id }}" method="POST" style="display:inline;">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="text-red-600">Eliminar</button>
+                            </form>
+                        </td>
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="5" class="border px-4 py-2 text-center">
+                        <td colspan="6" class="border px-4 py-2 text-center">
                             Todavía no has registrado entrenamientos.
                         </td>
                     </tr>

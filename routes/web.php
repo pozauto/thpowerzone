@@ -47,5 +47,8 @@ Route::middleware(['auth', 'role:student'])->group(function () {
     Route::get('/student/workouts', [WorkoutLogController::class, 'index']);
     Route::get('/student/workouts/create', [WorkoutLogController::class, 'create']);
     Route::post('/student/workouts', [WorkoutLogController::class, 'store']);
+    Route::get('/student/workouts/{workoutLog}/edit', [WorkoutLogController::class, 'edit']);
+    Route::put('/student/workouts/{workoutLog}', [WorkoutLogController::class, 'update']);
+    Route::delete('/student/workouts/{workoutLog}', [WorkoutLogController::class, 'destroy']);
     Route::get('/student/progress', [WorkoutLogController::class, 'progress']);
 });
